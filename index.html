@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurpfalz-Realschule Schriesheim – Lernen. Wachsen. Gemeinschaft.</title>
+<meta name="description" content="Die Kurpfalz-Realschule Schriesheim – eine aktive Schulgemeinschaft mit starken Profilen in Musik, Berufsorientierung und digitalem Lernen. Jetzt informieren!">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Kurpfalz-Realschule Schriesheim">
+<meta property="og:description" content="Lernen. Wachsen. Gemeinschaft. – Willkommen an der KRS Schriesheim.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://realschule-schriesheim.de">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "School",
+  "name": "Kurpfalz-Realschule Schriesheim",
+  "url": "https://realschule-schriesheim.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Hirschberger Straße 1",
+    "addressLocality": "Schriesheim",
+    "postalCode": "69198",
+    "addressCountry": "DE"
+  },
+  "telephone": "+49 6203 697230",
+  "description": "Realschule mit Profilen in Musik, Berufsorientierung und digitalem Lernen"
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   KRS REDESIGN 2026 – CSS
+   Die beste Schulhomepage Deutschlands
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Farben – KRS Brand-konform (gedämpftes Stahlblau wie im Logo) */
+  --krs-blue: #3A6B96;            /* Stahlblau – gedämpfter, passt zum Logo */
+  --krs-blue-dark: #2B3C4D;       /* Dunkles Blaugrau – exakt wie KRS-Überschriften */
+  --krs-blue-light: #EDF2F7;      /* Helles Blaugrau – sanfter */
+  --krs-orange: #EA7624;          /* KRS-Brand-Orange */
+  --krs-orange-dark: #D06418;     /* Hover-Zustand */
+  --krs-orange-light: #FEF3E8;    /* Heller Hintergrund */
+  --krs-green: #2D8B4E;
+  --krs-green-light: #E8F5ED;
+  --krs-red: #C0392B;
+  --krs-bg: #F5F7FA;              /* Etwas wärmer, wie original KRS (#E8ECF0 war zu grau) */
+  --krs-white: #FFFFFF;
+  --krs-text: #2B3C4D;            /* Exakt KRS-Überschriften-Farbe */
+  --krs-text-muted: #5A6B7D;      /* Gedämpftes Blaugrau, guter Kontrast (5.2:1) */
+  --krs-border: #E2E8F0;
+  --krs-shadow: 0 2px 12px rgba(13,78,152,0.08);
+  --krs-shadow-hover: 0 8px 30px rgba(13,78,152,0.15);
+  --krs-radius: 16px;
+  --krs-radius-sm: 10px;
+  --krs-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --krs-max-width: 1200px;
+  --krs-gap: 1.25rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--krs-text);
+  background: var(--krs-bg);
+  line-height: 1.65;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--krs-blue);
+  text-decoration: none;
+  transition: color var(--krs-transition);
+}
+a:hover { color: var(--krs-blue-dark); }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: var(--krs-max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Skip-Link für Barrierefreiheit */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--krs-blue);
+  color: #fff;
+  border-radius: var(--krs-radius-sm);
+  z-index: 9999;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ============================================
+   BARRIEREFREIHEIT: Focus-Styles (WCAG 2.4.7)
+   ============================================ */
+:focus-visible {
+  outline: 3px solid var(--krs-orange);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid var(--krs-orange);
+  outline-offset: 2px;
+}
+/* Auf dunklem Hintergrund weißer Focus */
+.hero :focus-visible,
+.testimonial-section :focus-visible,
+.footer :focus-visible,
+.utility-bar :focus-visible {
+  outline-color: #fff;
+}
+
+/* ============================================
+   UTILITY BAR (Header oben)
+   ============================================ */
+.utility-bar {
+  background: var(--krs-blue-dark);
+  color: #fff;
+  font-size: 0.82rem;
+  padding: 0.45rem 0;
+}
+.utility-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.utility-bar__contact {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.utility-bar__contact a {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.8rem;
+}
+.utility-bar__contact a:hover { color: #fff; }
+.utility-bar__links {
+  display: flex;
+  gap: 0.5rem;
+}
+.utility-bar__links a {
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: background var(--krs-transition);
+}
+.utility-bar__links a:hover {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+}
+
+/* ============================================
+   MAIN HEADER
+   ============================================ */
+.main-header {
+  background: var(--krs-white);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.main-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.logo__icon {
+  width: 48px;
+  height: 48px;
+  background: var(--krs-blue-dark);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 800;
+}
+.logo__text h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--krs-blue-dark);
+  line-height: 1.2;
+}
+.logo__text span {
+  font-size: 0.75rem;
+  color: var(--krs-text-muted);
+  font-weight: 400;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  gap: 0;
+}
+.main-nav__item {
+  position: relative;
+}
+.main-nav__link {
+  display: block;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--krs-text);
+  border-radius: var(--krs-radius-sm);
+  transition: all var(--krs-transition);
+}
+.main-nav__link:hover {
+  background: var(--krs-blue-light);
+  color: var(--krs-blue);
+}
+
+/* Dropdown */
+.main-nav__dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--krs-white);
+  border-radius: var(--krs-radius);
+  box-shadow: var(--krs-shadow-hover);
+  padding: 0.6rem 0;
+  min-width: 260px;
+  z-index: 200;
+  border: 1px solid var(--krs-border);
+}
+.main-nav__item:hover .main-nav__dropdown {
+  display: block;
+}
+.main-nav__dropdown a {
+  display: block;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.85rem;
+  color: var(--krs-text);
+  font-weight: 500;
+}
+.main-nav__dropdown a:hover {
+  background: var(--krs-blue-light);
+  color: var(--krs-blue);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem;
+  min-width: 44px;
+  min-height: 44px;
+}
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--krs-text);
+  margin: 5px 0;
+  border-radius: 3px;
+  transition: all var(--krs-transition);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 520px;
+  background: linear-gradient(135deg, #2A4A6B 0%, #3A6B96 50%, #4A7DA8 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.hero__bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image:
+    radial-gradient(circle at 20% 80%, #fff 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, #fff 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, #fff 0.5px, transparent 0.5px);
+  background-size: 60px 60px, 80px 80px, 40px 40px;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(42,74,107,0.92) 0%, rgba(58,107,150,0.7) 60%, rgba(74,125,168,0.5) 100%);
+}
+.hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 3.5rem 0;
+  max-width: 700px;
+}
+.hero__content .container {
+  padding: 0;
+}
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(234,118,36,0.2);
+  color: var(--krs-orange);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(234,118,36,0.3);
+}
+.hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.hero__title span {
+  color: var(--krs-orange);
+}
+.hero__subtitle {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 560px;
+}
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all var(--krs-transition);
+  text-decoration: none;
+}
+.btn--primary {
+  background: var(--krs-orange);
+  color: var(--krs-text);
+}
+.btn--primary:hover {
+  background: #D06418;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(234,118,36,0.3);
+  color: var(--krs-text);
+}
+.btn--outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+.btn--outline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+/* Hero Stats */
+.hero__stats {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.hero__stat {
+  text-align: center;
+}
+.hero__stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+}
+.hero__stat-label {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   QUICK ACCESS BAR (Schnellzugriff)
+   ============================================ */
+.quick-access {
+  background: var(--krs-white);
+  border-bottom: 1px solid var(--krs-border);
+  padding: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  position: relative;
+  z-index: 10;
+  margin-top: -2rem;
+  border-radius: var(--krs-radius) var(--krs-radius) 0 0;
+}
+.quick-access .container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.6rem;
+}
+.quick-access__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.7rem 0.5rem;
+  border-radius: var(--krs-radius-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--krs-text);
+  transition: all var(--krs-transition);
+  text-align: center;
+}
+.quick-access__item:hover {
+  background: var(--krs-blue-light);
+  color: var(--krs-blue);
+  transform: translateY(-2px);
+}
+.quick-access__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  background: var(--krs-blue-light);
+  color: var(--krs-blue);
+  transition: all var(--krs-transition);
+}
+.quick-access__item:hover .quick-access__icon {
+  background: var(--krs-blue);
+  color: #fff;
+}
+.quick-access__item--alert .quick-access__icon {
+  background: #FFE8E5;
+  color: var(--krs-red);
+}
+.quick-access__item--alert:hover .quick-access__icon {
+  background: var(--krs-red);
+  color: #fff;
+}
+
+/* ============================================
+   AKTUELLES (News Section)
+   ============================================ */
+.section {
+  padding: 3.5rem 0;
+}
+.section--alt {
+  background: var(--krs-white);
+}
+.section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.section__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--krs-text);
+}
+.section__subtitle {
+  color: var(--krs-text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+.section__link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.section__link:hover { gap: 0.6rem; }
+
+/* News Grid */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--krs-gap);
+}
+.news-card {
+  background: var(--krs-white);
+  border-radius: var(--krs-radius);
+  overflow: hidden;
+  box-shadow: var(--krs-shadow);
+  transition: all var(--krs-transition);
+  border: 1px solid var(--krs-border);
+}
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--krs-shadow-hover);
+}
+.news-card__image {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--krs-blue-light), #d4e4f7);
+  overflow: hidden;
+  position: relative;
+}
+.news-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.news-card__category {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: var(--krs-blue);
+  color: #fff;
+  padding: 0.2rem 0.7rem;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.news-card__body {
+  padding: 1.2rem;
+}
+.news-card__date {
+  font-size: 0.78rem;
+  color: var(--krs-text-muted);
+  margin-bottom: 0.4rem;
+}
+.news-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+.news-card__title a {
+  color: var(--krs-text);
+}
+.news-card__title a:hover {
+  color: var(--krs-blue);
+}
+.news-card__excerpt {
+  font-size: 0.88rem;
+  color: var(--krs-text-muted);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Featured News (erste Karte groß) */
+.news-grid--featured {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+.news-grid--featured .news-card:first-child {
+  grid-row: span 2;
+}
+.news-grid--featured .news-card:first-child .news-card__image {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 200px;
+}
+.news-grid--featured .news-card:first-child {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+/* ============================================
+   PERSONAS (Ich bin...)
+   ============================================ */
+.personas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--krs-gap);
+}
+.persona-card {
+  position: relative;
+  border-radius: var(--krs-radius);
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all var(--krs-transition);
+  cursor: pointer;
+  text-decoration: none;
+}
+.persona-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--krs-shadow-hover);
+}
+.persona-card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.persona-card--eltern .persona-card__bg {
+  background: linear-gradient(160deg, #2A4A6B 0%, #4A7DA8 100%);
+}
+.persona-card--schueler .persona-card__bg {
+  background: linear-gradient(160deg, #2D8B4E 0%, #43A047 100%);
+}
+.persona-card--neu .persona-card__bg {
+  background: linear-gradient(160deg, #C05A10 0%, #EA7624 100%);
+}
+/* Persona-Card "Neu hier" – hellere Variante für besseren Kontrast */
+.persona-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+  z-index: 1;
+}
+.persona-card__content {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  color: #fff;
+}
+.persona-card__emoji {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+.persona-card__title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.persona-card__desc {
+  font-size: 0.85rem;
+  opacity: 0.88;
+  line-height: 1.5;
+}
+.persona-card__links {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.persona-card__link-tag {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  transition: background var(--krs-transition);
+}
+.persona-card__link-tag:hover {
+  background: rgba(255,255,255,0.35);
+  color: #fff;
+}
+
+/* ============================================
+   FEATURES (Schule auf einen Blick)
+   ============================================ */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--krs-gap);
+}
+.feature-card {
+  background: var(--krs-white);
+  border-radius: var(--krs-radius);
+  padding: 1.8rem 1.4rem;
+  text-align: center;
+  box-shadow: var(--krs-shadow);
+  border: 1px solid var(--krs-border);
+  transition: all var(--krs-transition);
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--krs-shadow-hover);
+  border-color: var(--krs-blue);
+}
+.feature-card__icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+.feature-card__icon--blue { background: var(--krs-blue-light); }
+.feature-card__icon--gold { background: var(--krs-orange-light); }
+.feature-card__icon--green { background: var(--krs-green-light); }
+.feature-card__icon--purple { background: #F0E8FA; }
+.feature-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.feature-card__desc {
+  font-size: 0.84rem;
+  color: var(--krs-text-muted);
+  line-height: 1.5;
+}
+
+/* ============================================
+   TERMINE (Timeline)
+   ============================================ */
+.termine-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.termin-item {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--krs-border);
+  align-items: flex-start;
+  transition: background var(--krs-transition);
+}
+.termin-item:hover {
+  background: var(--krs-blue-light);
+  margin: 0 -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: var(--krs-radius-sm);
+}
+.termin-item:last-child { border-bottom: none; }
+.termin__date-box {
+  min-width: 60px;
+  text-align: center;
+  background: var(--krs-blue);
+  color: #fff;
+  border-radius: var(--krs-radius-sm);
+  padding: 0.6rem 0.5rem;
+  flex-shrink: 0;
+}
+.termin__day {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.termin__month {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.termin__info h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+.termin__info p {
+  font-size: 0.82rem;
+  color: var(--krs-text-muted);
+}
+.termin__badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+.termin__badge--event { background: var(--krs-orange-light); color: #8B4513; }
+.termin__badge--pruefung { background: #FFE8E5; color: var(--krs-red); }
+.termin__badge--frei { background: var(--krs-green-light); color: var(--krs-green); }
+
+/* ============================================
+   TESTIMONIAL
+   ============================================ */
+.testimonial-section {
+  background: linear-gradient(135deg, var(--krs-blue) 0%, var(--krs-blue-dark) 100%);
+  padding: 3.5rem 0;
+  color: #fff;
+  text-align: center;
+}
+.testimonial-section .section__title {
+  color: #fff;
+}
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--krs-gap);
+  margin-top: 2rem;
+}
+.testimonial-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--krs-radius);
+  padding: 1.5rem;
+  text-align: left;
+}
+.testimonial-card__quote {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.testimonial-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+.testimonial-card__name {
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+.testimonial-card__role {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--krs-text);
+  color: rgba(255,255,255,0.8);
+  padding: 3rem 0 1.5rem;
+}
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.footer__brand h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.footer__brand p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  max-width: 300px;
+}
+.footer__brand-address {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+.footer h4 {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.footer ul {
+  list-style: none;
+}
+.footer ul li {
+  margin-bottom: 0.4rem;
+}
+.footer ul a {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  transition: color var(--krs-transition);
+}
+.footer ul a:hover { color: var(--krs-orange); }
+.footer__bottom {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+}
+.footer__legal a {
+  color: rgba(255,255,255,0.6);
+  margin-left: 1.2rem;
+}
+.footer__legal a:hover { color: var(--krs-orange); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+  .news-grid--featured { grid-template-columns: 1fr; }
+  .news-grid--featured .news-card:first-child { grid-row: span 1; }
+  .features { grid-template-columns: repeat(2, 1fr); }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .testimonials { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .utility-bar__contact { display: none; }
+  .main-nav { display: none; }
+  .menu-toggle { display: block; }
+
+  .hero { min-height: 420px; }
+  .hero__title { font-size: 1.8rem; }
+  .hero__stats { gap: 1rem; flex-wrap: wrap; }
+
+  .quick-access .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .news-grid { grid-template-columns: 1fr; }
+  .personas { grid-template-columns: 1fr; }
+  .persona-card { min-height: 200px; }
+  .features { grid-template-columns: 1fr; }
+  .testimonials { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; }
+
+  .section { padding: 2.5rem 0; }
+}
+
+@media (max-width: 480px) {
+  .quick-access .container { grid-template-columns: repeat(3, 1fr); }
+  .hero__actions { flex-direction: column; }
+  .btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Print Styles */
+@media print {
+  .utility-bar, .quick-access, .main-header { display: none; }
+  .hero { min-height: auto; padding: 1rem; }
+  body { font-size: 12pt; }
+}
+</style>
+</head>
+<body>
+
+<!-- Skip Navigation (Barrierefreiheit) -->
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<!-- ============ UTILITY BAR ============ -->
+<div class="utility-bar" role="complementary" aria-label="Kontaktleiste">
+  <div class="container">
+    <div class="utility-bar__contact">
+      <a href="tel:+496203697230">&#9742; 06203 / 697230</a>
+      <a href="mailto:sekretariat@realschule-schriesheim.de">&#9993; sekretariat@realschule-schriesheim.de</a>
+    </div>
+    <div class="utility-bar__links">
+      <a href="/service/kontakt/">Kontakt</a>
+      <a href="/service/termine/">Termine</a>
+      <a href="/e-mail-login/">E-Mail Login</a>
+      <a href="/krankmeldung/">Krankmeldung</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN HEADER ============ -->
+<header class="main-header" role="banner">
+  <div class="container">
+    <a href="/" class="logo" aria-label="Startseite">
+      <div class="logo__icon">K</div>
+      <div class="logo__text">
+        <h1>Kurpfalz-Realschule</h1>
+        <span>Schriesheim</span>
+      </div>
+    </a>
+
+    <nav class="main-nav" role="navigation" aria-label="Hauptnavigation">
+      <div class="main-nav__item">
+        <a href="/schule/" class="main-nav__link">Unsere Schule</a>
+        <div class="main-nav__dropdown">
+          <a href="/schule/schulleitung/">Schulleitung & Kollegium</a>
+          <a href="/schule/leitbild/">Leitbild & Profil</a>
+          <a href="/schule/faecher/">Fächer & Bildungsplan</a>
+          <a href="/schule/beratung/">Beratung & Sozialarbeit</a>
+          <a href="/schule/kooperationen/">Kooperationen</a>
+          <a href="/schule/freundeskreis/">Freundeskreis</a>
+        </div>
+      </div>
+      <div class="main-nav__item">
+        <a href="/schulleben/" class="main-nav__link">Schulleben</a>
+        <div class="main-nav__dropdown">
+          <a href="/schulleben/ags/">AGs & Projekte</a>
+          <a href="/schulleben/smv/">SMV</a>
+          <a href="/schulleben/schulband/">Schulband & Schulsong</a>
+          <a href="/schulleben/theater/">Theater</a>
+          <a href="/schulleben/fahrten/">Fahrten & Austausche</a>
+          <a href="/schulleben/singeklassen/">Singeklassen</a>
+        </div>
+      </div>
+      <div class="main-nav__item">
+        <a href="/berufsorientierung/" class="main-nav__link">Berufsorientierung</a>
+        <div class="main-nav__dropdown">
+          <a href="/berufsorientierung/konzept/">Konzept & Übersicht</a>
+          <a href="/berufsorientierung/aktionen/">Angebote & Aktionen</a>
+          <a href="/berufsorientierung/beratung/">Berufsberatung</a>
+          <a href="/berufsorientierung/partner/">Partner & Formulare</a>
+        </div>
+      </div>
+      <div class="main-nav__item">
+        <a href="/fuer-eltern-schueler/" class="main-nav__link">Eltern & Schüler</a>
+        <div class="main-nav__dropdown">
+          <a href="/eltern/anmeldung-klasse-5/">&#9733; Anmeldung Klasse 5</a>
+          <a href="/eltern/elternbeirat/">Elternbeirat</a>
+          <a href="/schueler/hausordnung/">Schulordnung & Infos</a>
+          <a href="/e-mail-login/">E-Mail-Login & Tools</a>
+          <a href="/service/mensa/">Mensa & Speiseplan</a>
+          <a href="/schueler/laeutezeiten/">Läutezeiten & A/B-Wochen</a>
+        </div>
+      </div>
+      <div class="main-nav__item">
+        <a href="/service/" class="main-nav__link">Service</a>
+        <div class="main-nav__dropdown">
+          <a href="/service/kontakt/">Kontakt & Anfahrt</a>
+          <a href="/service/termine/">Termine & Kalender</a>
+          <a href="/service/downloads/">Downloads</a>
+          <a href="/service/ferienregelung/">Ferienregelung</a>
+          <a href="/service/schulkleidung/">Schulkleidung</a>
+          <a href="/service/presse/">Für Medien & Presse</a>
+        </div>
+      </div>
+    </nav>
+
+    <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<main id="main">
+<section class="hero" aria-label="Willkommen">
+  <div class="hero__bg-pattern"></div>
+  <div class="hero__overlay"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="hero__content">
+      <div class="hero__badge">&#127891; Anmeldung Klasse 5 – jetzt informieren!</div>
+      <h2 class="hero__title">Lernen. Wachsen.<br><span>Gemeinschaft.</span></h2>
+      <p class="hero__subtitle">
+        Die Kurpfalz-Realschule Schriesheim ist mehr als eine Schule – wir sind eine
+        lebendige Gemeinschaft, die junge Menschen stark macht für ihre Zukunft.
+      </p>
+      <div class="hero__actions">
+        <a href="/eltern/anmeldung-klasse-5/" class="btn btn--primary">Anmeldung Klasse 5 &#8594;</a>
+        <a href="/ueber-uns-video-imagefilm/" class="btn btn--outline">&#9654; Imagefilm ansehen</a>
+      </div>
+    </div>
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <div class="hero__stat-number">580+</div>
+        <div class="hero__stat-label">Schüler:innen</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-number">45</div>
+        <div class="hero__stat-label">Lehrkräfte</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-number">15+</div>
+        <div class="hero__stat-label">AGs</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-number">25+</div>
+        <div class="hero__stat-label">Jahre Tradition</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUICK ACCESS ============ -->
+<section class="quick-access" aria-label="Schnellzugriff">
+  <div class="container">
+    <a href="/aktuelles/" class="quick-access__item">
+      <span class="quick-access__icon">&#128240;</span>
+      <span>Aktuelles</span>
+    </a>
+    <a href="/service/termine/" class="quick-access__item">
+      <span class="quick-access__icon">&#128197;</span>
+      <span>Termine</span>
+    </a>
+    <a href="/vertretungsplan/" class="quick-access__item">
+      <span class="quick-access__icon">&#128203;</span>
+      <span>Vertretungsplan</span>
+    </a>
+    <a href="/service/mensa/" class="quick-access__item">
+      <span class="quick-access__icon">&#127860;</span>
+      <span>Mensa</span>
+    </a>
+    <a href="/service/downloads/" class="quick-access__item">
+      <span class="quick-access__icon">&#128229;</span>
+      <span>Downloads</span>
+    </a>
+    <a href="/krankmeldung/" class="quick-access__item quick-access__item--alert">
+      <span class="quick-access__icon">&#129657;</span>
+      <span>Krankmeldung</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ AKTUELLES ============ -->
+<section class="section" aria-label="Aktuelles">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <h2 class="section__title">Aktuelles aus dem Schulleben</h2>
+        <p class="section__subtitle">Was bei uns los ist – Neuigkeiten, Projekte und Erfolge</p>
+      </div>
+      <a href="/aktuelles/" class="section__link">Alle Beiträge &#8594;</a>
+    </div>
+
+    <div class="news-grid">
+      <!-- Neuester Beitrag -->
+      <article class="news-card">
+        <div class="news-card__image">
+          <span class="news-card__category">Prüfungen</span>
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#E8F0FA,#c9ddf5);display:flex;align-items:center;justify-content:center;font-size:3rem;">&#128218;</div>
+        </div>
+        <div class="news-card__body">
+          <div class="news-card__date">24. Februar 2026</div>
+          <h3 class="news-card__title"><a href="#">Prüfungsvorbereitung: „Deutsch, Mathe, Englisch – Lernen mit Rückenwind"</a></h3>
+          <p class="news-card__excerpt">Gezielte Förderung für den Endspurt – unsere Schüler:innen werden optimal auf die Abschlussprüfungen vorbereitet.</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-card__image">
+          <span class="news-card__category">Anmeldung</span>
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#FFF8E8,#f5e6c0);display:flex;align-items:center;justify-content:center;font-size:3rem;">&#127891;</div>
+        </div>
+        <div class="news-card__body">
+          <div class="news-card__date">13. Februar 2026</div>
+          <h3 class="news-card__title"><a href="#">Anmeldetermine für Klassenstufe 5</a></h3>
+          <p class="news-card__excerpt">Alle Informationen zu Terminen, Unterlagen und Ablauf der Anmeldung für das kommende Schuljahr.</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-card__image">
+          <span class="news-card__category">Event</span>
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#E8F5ED,#c0e8d0);display:flex;align-items:center;justify-content:center;font-size:3rem;">&#127881;</div>
+        </div>
+        <div class="news-card__body">
+          <div class="news-card__date">13. Februar 2026</div>
+          <h3 class="news-card__title"><a href="#">Tag der offenen Tür begeistert mit lebendigem Lernen und klaren Perspektiven</a></h3>
+          <p class="news-card__excerpt">Hunderte Besucher erlebten unsere Schule hautnah – von Singeklassen bis Robotik-AG.</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-card__image">
+          <span class="news-card__category">SMV</span>
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#F0E8FA,#ddd0f5);display:flex;align-items:center;justify-content:center;font-size:3rem;">&#127801;</div>
+        </div>
+        <div class="news-card__body">
+          <div class="news-card__date">13. Februar 2026</div>
+          <h3 class="news-card__title"><a href="#">Sag's mit einer Rose: SMV-Valentinsaktion</a></h3>
+          <p class="news-card__excerpt">Unser SMV-Quartett verbreitete mit einer liebevollen Rosenaktion schon vor dem Valentinstag gute Laune.</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-card__image">
+          <span class="news-card__category">Schnuppertage</span>
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#E8F0FA,#b8d4f0);display:flex;align-items:center;justify-content:center;font-size:3rem;">&#128587;</div>
+        </div>
+        <div class="news-card__body">
+          <div class="news-card__date">6. Februar 2026</div>
+          <h3 class="news-card__title"><a href="#">Volles Haus und strahlende Gesichter: Schnuppertage waren ein voller Erfolg!</a></h3>
+          <p class="news-card__excerpt">Neugierige Viertklässler erkundeten unsere Schule und probierten AGs, Fächer und das Schulleben aus.</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-card__image">
+          <span class="news-card__category">Kultur</span>
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#FFF8E8,#f0ddb8);display:flex;align-items:center;justify-content:center;font-size:3rem;">&#127917;</div>
+        </div>
+        <div class="news-card__body">
+          <div class="news-card__date">3. Februar 2026</div>
+          <h3 class="news-card__title"><a href="#">Einladung zur Aufführung auf dem Mathaisemarkt</a></h3>
+          <p class="news-card__excerpt">Unsere Theater- und Musik-AGs präsentieren ihr Können auf der großen Bühne des Schriesheimer Mathaisemarkt.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ICH BIN... (Personas) ============ -->
+<section class="section section--alt" aria-label="Zielgruppen-Navigation">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <h2 class="section__title">Ich bin...</h2>
+        <p class="section__subtitle">Finden Sie schnell, was Sie suchen</p>
+      </div>
+    </div>
+
+    <div class="personas">
+      <a href="/eltern/" class="persona-card persona-card--eltern">
+        <div class="persona-card__bg"></div>
+        <div class="persona-card__overlay"></div>
+        <div class="persona-card__content">
+          <div class="persona-card__emoji">&#128106;</div>
+          <h3 class="persona-card__title">Eltern</h3>
+          <p class="persona-card__desc">Anmeldung, Termine, Downloads und alles Wichtige für den Schulalltag.</p>
+          <div class="persona-card__links">
+            <span class="persona-card__link-tag">Anmeldung</span>
+            <span class="persona-card__link-tag">Elternbeirat</span>
+            <span class="persona-card__link-tag">Downloads</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/schueler/" class="persona-card persona-card--schueler">
+        <div class="persona-card__bg"></div>
+        <div class="persona-card__overlay"></div>
+        <div class="persona-card__content">
+          <div class="persona-card__emoji">&#127891;</div>
+          <h3 class="persona-card__title">Schüler:innen</h3>
+          <p class="persona-card__desc">Vertretungsplan, E-Mail, AGs und alles für euren Schulalltag.</p>
+          <div class="persona-card__links">
+            <span class="persona-card__link-tag">Vertretungsplan</span>
+            <span class="persona-card__link-tag">E-Mail</span>
+            <span class="persona-card__link-tag">AGs</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/unsere-schule/" class="persona-card persona-card--neu">
+        <div class="persona-card__bg"></div>
+        <div class="persona-card__overlay"></div>
+        <div class="persona-card__content">
+          <div class="persona-card__emoji">&#128075;</div>
+          <h3 class="persona-card__title">Neu hier?</h3>
+          <p class="persona-card__desc">Lernen Sie unsere Schule kennen – Imagefilm, Rundgang und alle Infos für Interessierte.</p>
+          <div class="persona-card__links">
+            <span class="persona-card__link-tag">Imagefilm</span>
+            <span class="persona-card__link-tag">Rundgang</span>
+            <span class="persona-card__link-tag">Flyer</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UNSERE SCHULE AUF EINEN BLICK ============ -->
+<section class="section" aria-label="Schulprofil">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <h2 class="section__title">Unsere Schule auf einen Blick</h2>
+        <p class="section__subtitle">Was uns besonders macht</p>
+      </div>
+    </div>
+
+    <div class="features">
+      <a href="/schulleben/singeklassen/" class="feature-card" style="text-decoration:none;color:inherit;">
+        <div class="feature-card__icon feature-card__icon--blue">&#127925;</div>
+        <h3 class="feature-card__title">Singeklassen</h3>
+        <p class="feature-card__desc">Musik als Lebensbegleiter – unsere Singeklassen fördern Gemeinschaft und Persönlichkeit.</p>
+      </a>
+
+      <a href="/berufsorientierung/" class="feature-card" style="text-decoration:none;color:inherit;">
+        <div class="feature-card__icon feature-card__icon--gold">&#128188;</div>
+        <h3 class="feature-card__title">Berufsorientierung</h3>
+        <p class="feature-card__desc">Systematische Vorbereitung auf die Zukunft mit starken Partnern aus der Wirtschaft.</p>
+      </a>
+
+      <a href="/schulleben/ags/" class="feature-card" style="text-decoration:none;color:inherit;">
+        <div class="feature-card__icon feature-card__icon--green">&#127912;</div>
+        <h3 class="feature-card__title">AGs & Schulleben</h3>
+        <p class="feature-card__desc">Von Theater über Schulband bis Schulsanitätsdienst – über 15 AGs warten auf euch.</p>
+      </a>
+
+      <a href="/schule/faecher/" class="feature-card" style="text-decoration:none;color:inherit;">
+        <div class="feature-card__icon feature-card__icon--purple">&#128187;</div>
+        <h3 class="feature-card__title">Digitales Lernen</h3>
+        <p class="feature-card__desc">Moderne Ausstattung und digitale Werkzeuge für zeitgemäßen Unterricht.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TERMINE ============ -->
+<section class="section section--alt" aria-label="Termine">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <h2 class="section__title">Nächste Termine</h2>
+        <p class="section__subtitle">Was demnächst ansteht</p>
+      </div>
+      <a href="/service/termine/" class="section__link">Alle Termine &#8594;</a>
+    </div>
+
+    <div class="termine-list">
+      <div class="termin-item">
+        <div class="termin__date-box">
+          <div class="termin__day">22</div>
+          <div class="termin__month">März</div>
+        </div>
+        <div class="termin__info">
+          <h3>Mathaisemarkt-Aufführung</h3>
+          <p>Theater- und Musik-AGs auf der großen Bühne</p>
+          <span class="termin__badge termin__badge--event">Veranstaltung</span>
+        </div>
+      </div>
+
+      <div class="termin-item">
+        <div class="termin__date-box">
+          <div class="termin__day">05</div>
+          <div class="termin__month">Apr</div>
+        </div>
+        <div class="termin__info">
+          <h3>Elternsprechtag</h3>
+          <p>Individuelle Gespräche mit allen Lehrkräften, 14:00–18:00 Uhr</p>
+          <span class="termin__badge termin__badge--event">Eltern</span>
+        </div>
+      </div>
+
+      <div class="termin-item">
+        <div class="termin__date-box" style="background:var(--krs-green);">
+          <div class="termin__day">14</div>
+          <div class="termin__month">Apr</div>
+        </div>
+        <div class="termin__info">
+          <h3>Osterferien</h3>
+          <p>14. April – 25. April 2026</p>
+          <span class="termin__badge termin__badge--frei">Ferien</span>
+        </div>
+      </div>
+
+      <div class="termin-item">
+        <div class="termin__date-box" style="background:var(--krs-red);">
+          <div class="termin__day">12</div>
+          <div class="termin__month">Mai</div>
+        </div>
+        <div class="termin__info">
+          <h3>Schriftliche Abschlussprüfung Deutsch</h3>
+          <p>Klasse 10 – Beginn 8:00 Uhr</p>
+          <span class="termin__badge termin__badge--pruefung">Prüfung</span>
+        </div>
+      </div>
+
+      <div class="termin-item">
+        <div class="termin__date-box">
+          <div class="termin__day">20</div>
+          <div class="termin__month">Mai</div>
+        </div>
+        <div class="termin__info">
+          <h3>Schulkonzert der Singeklassen</h3>
+          <p>In der Aula – Einlass ab 18:30 Uhr</p>
+          <span class="termin__badge termin__badge--event">Veranstaltung</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonial-section" aria-label="Stimmen aus der Schulgemeinschaft">
+  <div class="container">
+    <h2 class="section__title">Stimmen aus unserer Schulgemeinschaft</h2>
+
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <p class="testimonial-card__quote">„Mein Sohn geht jeden Tag gerne zur Schule. Die Singeklasse hat ihn unglaublich gestärkt – nicht nur musikalisch, sondern als Persönlichkeit."</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">&#128105;</div>
+          <div>
+            <div class="testimonial-card__name">Elternteil</div>
+            <div class="testimonial-card__role">Klasse 6a</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-card__quote">„Die Berufsorientierung an der KRS ist top. Durch das Praktikum und die Beratung weiß ich jetzt genau, was ich nach der Schule machen will."</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">&#129333;</div>
+          <div>
+            <div class="testimonial-card__name">Schülerin</div>
+            <div class="testimonial-card__role">Klasse 10b</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-card__quote">„Die SMV macht richtig coole Aktionen – vom Nikolaus-Besuch bis zu den Thementagen. Man merkt, dass die Schule lebt."</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">&#129332;</div>
+          <div>
+            <div class="testimonial-card__name">Schüler</div>
+            <div class="testimonial-card__role">Klasse 8c</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Kurpfalz-Realschule Schriesheim</h3>
+        <p>Lernen. Wachsen. Gemeinschaft. – Seit über 25 Jahren eine starke Schulgemeinschaft in der Metropolregion Rhein-Neckar.</p>
+        <div class="footer__brand-address">
+          Hirschberger Straße 1<br>
+          69198 Schriesheim<br>
+          Tel: 06203 / 697230<br>
+          Fax: 06203 / 6972350<br>
+          <a href="mailto:sekretariat@realschule-schriesheim.de">sekretariat@realschule-schriesheim.de</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Schule</h4>
+        <ul>
+          <li><a href="/schule/schulleitung/">Schulleitung</a></li>
+          <li><a href="/schule/leitbild/">Leitbild</a></li>
+          <li><a href="/schule/beratung/">Beratung</a></li>
+          <li><a href="/schule/kooperationen/">Kooperationen</a></li>
+          <li><a href="/schule/freundeskreis/">Freundeskreis</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Service</h4>
+        <ul>
+          <li><a href="/service/kontakt/">Kontakt & Anfahrt</a></li>
+          <li><a href="/service/termine/">Termine</a></li>
+          <li><a href="/service/downloads/">Downloads</a></li>
+          <li><a href="/service/mensa/">Mensa</a></li>
+          <li><a href="/krankmeldung/">Krankmeldung</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Für Eltern</h4>
+        <ul>
+          <li><a href="/eltern/anmeldung-klasse-5/">Anmeldung Klasse 5</a></li>
+          <li><a href="/eltern/elternbeirat/">Elternbeirat</a></li>
+          <li><a href="/ueber-uns-video-imagefilm/">Imagefilm</a></li>
+          <li><a href="/service/schulkleidung/">Schulkleidung</a></li>
+          <li><a href="/service/ferienregelung/">Ferienregelung</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; 2026 Kurpfalz-Realschule Schriesheim</span>
+      <div class="footer__legal">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+        <a href="/barrierefreiheit/">Barrierefreiheit</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile Menu Toggle
+document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+  const nav = document.querySelector('.main-nav');
+  const isOpen = this.getAttribute('aria-expanded') === 'true';
+  this.setAttribute('aria-expanded', !isOpen);
+  nav.style.display = isOpen ? 'none' : 'flex';
+  if (!isOpen) {
+    nav.style.flexDirection = 'column';
+    nav.style.position = 'absolute';
+    nav.style.top = '100%';
+    nav.style.left = '0';
+    nav.style.right = '0';
+    nav.style.background = '#fff';
+    nav.style.padding = '1rem';
+    nav.style.boxShadow = '0 8px 30px rgba(0,0,0,0.1)';
+    nav.style.zIndex = '200';
+  }
+});
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.news-card, .persona-card, .feature-card, .termin-item, .testimonial-card').forEach(el => {
+  el.style.opacity = '0';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

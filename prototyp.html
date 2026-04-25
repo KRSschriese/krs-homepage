@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurpfalz-Realschule Schriesheim – Redesign Prototyp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── CSS Reset & Variablen ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:      #00254E;
+      --blue-mid:  #50657e;
+      --gold:      #ECB200;
+      --orange:    #ea7623;
+      --white:     #ffffff;
+      --gray-50:   #f8f9fb;
+      --gray-100:  #f0f2f5;
+      --gray-200:  #e2e6ea;
+      --gray-600:  #4a5568;
+      --gray-800:  #1a202c;
+      --radius:    10px;
+      --shadow:    0 2px 12px rgba(0,37,78,.10);
+      --shadow-lg: 0 8px 32px rgba(0,37,78,.14);
+      --font:      'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--gray-800); background: #fff; line-height: 1.6; }
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+
+    /* ── Prototype-Banner ── */
+    .proto-banner {
+      background: var(--gold);
+      color: var(--blue);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    /* ── Topbar ── */
+    .topbar {
+      background: var(--blue);
+      color: rgba(255,255,255,.75);
+      font-size: .78rem;
+      padding: 6px 0;
+    }
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .topbar a { color: rgba(255,255,255,.75); transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-links { display: flex; gap: 20px; }
+
+    /* ── Header / Navbar ── */
+    .site-header {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 24px;
+    }
+    .site-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -.5px;
+    }
+    .logo-text { line-height: 1.2; }
+    .logo-text strong {
+      display: block;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .logo-text span {
+      font-size: .75rem;
+      color: var(--blue-mid);
+    }
+
+    /* ── Navigation ── */
+    .main-nav { display: flex; align-items: center; gap: 4px; }
+    .nav-item  { position: relative; }
+    .nav-link  {
+      display: block;
+      padding: 8px 14px;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--blue);
+      border-radius: 6px;
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: var(--gray-100);
+      color: var(--blue);
+    }
+    .nav-link.active { font-weight: 700; }
+
+    /* Dropdown */
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      min-width: 200px;
+      padding: 8px 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity .18s, transform .18s;
+      border-top: 3px solid var(--gold);
+    }
+    .nav-item:hover .dropdown,
+    .nav-item:focus-within .dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+    .dropdown a {
+      display: block;
+      padding: 9px 18px;
+      font-size: .86rem;
+      color: var(--gray-600);
+      transition: background .15s, color .15s;
+    }
+    .dropdown a:hover { background: var(--gray-50); color: var(--blue); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--blue) !important;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+    }
+    .nav-cta:hover { background: #d4a000; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--blue) 0%, #003a7a 60%, #1a5276 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      padding: 72px 24px 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ECB200' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(236,178,0,.18);
+      border: 1px solid rgba(236,178,0,.35);
+      color: var(--gold);
+      font-size: .8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 99px;
+      margin-bottom: 20px;
+      letter-spacing: .04em;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.82);
+      max-width: 480px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 8px;
+      font-size: .95rem;
+      font-weight: 600;
+      transition: transform .15s, box-shadow .15s, background .15s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+    .btn-gold { background: var(--gold); color: var(--blue); }
+    .btn-gold:hover { background: #d4a000; }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.4);
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.08); }
+
+    /* Hero Visual */
+    .hero-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .hero-card {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius);
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      transition: background .2s;
+    }
+    .hero-card:hover { background: rgba(255,255,255,.15); }
+    .hero-card.featured {
+      grid-column: span 2;
+      background: rgba(236,178,0,.15);
+      border-color: rgba(236,178,0,.3);
+    }
+    .hero-card-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .hero-card h3 { font-size: .9rem; font-weight: 700; margin-bottom: 4px; }
+    .hero-card p  { font-size: .78rem; color: rgba(255,255,255,.7); }
+
+    /* ── Quicklinks ── */
+    .quicklinks {
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 28px 24px;
+    }
+    .quicklinks-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .ql-label {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-right: 4px;
+      flex-shrink: 0;
+    }
+    .ql-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--blue);
+      transition: border-color .2s, box-shadow .2s, transform .15s;
+    }
+    .ql-btn:hover {
+      border-color: var(--blue);
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+    }
+    .ql-btn .ql-icon { font-size: 1.1rem; }
+    .ql-btn.highlight {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
+    }
+    .ql-btn.highlight:hover { background: #003a7a; }
+
+    /* ── Zielgruppen ── */
+    .zielgruppen {
+      padding: 60px 24px;
+      background: var(--white);
+    }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 40px; }
+    .section-tag {
+      display: inline-block;
+      background: rgba(0,37,78,.08);
+      color: var(--blue);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .section-header p { font-size: 1rem; color: var(--gray-600); max-width: 520px; margin: 0 auto; }
+
+    .zg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .zg-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid var(--gray-200);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+      cursor: pointer;
+    }
+    .zg-card:hover {
+      border-color: var(--blue);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .zg-card-top {
+      padding: 36px 28px 28px;
+      text-align: center;
+    }
+    .zg-card:nth-child(1) .zg-card-top { background: linear-gradient(135deg, #00254E, #1a5276); color: white; }
+    .zg-card:nth-child(2) .zg-card-top { background: linear-gradient(135deg, #50657e, #7a94ad); color: white; }
+    .zg-card:nth-child(3) .zg-card-top { background: linear-gradient(135deg, #ECB200, #f5c842); color: var(--blue); }
+    .zg-emoji { font-size: 2.8rem; margin-bottom: 12px; }
+    .zg-card-top h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+    .zg-card-top p { font-size: .85rem; opacity: .85; }
+    .zg-card-links { padding: 16px 20px; }
+    .zg-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 4px;
+      font-size: .88rem;
+      color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-100);
+      transition: color .15s;
+    }
+    .zg-link:last-child { border-bottom: none; }
+    .zg-link:hover { color: var(--blue); }
+    .zg-link-arrow { font-size: .7rem; opacity: .5; }
+
+    /* ── News ── */
+    .news-section {
+      padding: 60px 24px;
+      background: var(--gray-50);
+    }
+    .section-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .section-header-row h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 800;
+      color: var(--blue);
+    }
+    .view-all {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--blue);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 2px;
+      white-space: nowrap;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .news-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .news-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .news-img {
+      height: 180px;
+      object-fit: cover;
+      width: 100%;
+      background: var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--gray-600);
+    }
+    .news-body { padding: 20px; }
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .news-cat {
+      background: rgba(0,37,78,.08);
+      color: var(--blue);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .news-date { font-size: .78rem; color: var(--gray-600); }
+    .news-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .news-card p { font-size: .86rem; color: var(--gray-600); line-height: 1.6; }
+    .news-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    /* ── Highlights / Projekte ── */
+    .highlights {
+      padding: 60px 24px;
+      background: var(--blue);
+      color: var(--white);
+    }
+    .highlights .section-header h2 { color: var(--white); }
+    .highlights .section-header p { color: rgba(255,255,255,.75); }
+    .highlights .section-tag {
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.9);
+    }
+    .hl-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .hl-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      transition: background .2s, transform .2s;
+    }
+    .hl-card:hover { background: rgba(255,255,255,.14); transform: translateY(-3px); }
+    .hl-icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .hl-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+    .hl-card p  { font-size: .8rem; color: rgba(255,255,255,.65); line-height: 1.5; }
+
+    /* ── Termine ── */
+    .termine-section {
+      padding: 60px 24px;
+      background: var(--white);
+    }
+    .termine-list { display: flex; flex-direction: column; gap: 12px; }
+    .termin-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .termin-item:hover { border-color: var(--blue); box-shadow: var(--shadow); }
+    .termin-date {
+      flex-shrink: 0;
+      width: 60px;
+      text-align: center;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 8px 4px;
+    }
+    .termin-date .day   { display: block; font-size: 1.4rem; font-weight: 800; line-height: 1; }
+    .termin-date .month { display: block; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; opacity: .8; margin-top: 2px; }
+    .termin-info h4 { font-size: .95rem; font-weight: 700; color: var(--blue); margin-bottom: 2px; }
+    .termin-info p  { font-size: .82rem; color: var(--gray-600); }
+    .termin-tag {
+      margin-left: auto;
+      flex-shrink: 0;
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .tag-schule { background: rgba(0,37,78,.08); color: var(--blue); }
+    .tag-eltern { background: rgba(236,178,0,.2); color: #8a6800; }
+    .tag-smv    { background: rgba(80,101,126,.12); color: var(--blue-mid); }
+
+    /* ── Kontakt-CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--gold), #f5c842);
+      padding: 56px 24px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .cta-section p { font-size: 1rem; color: rgba(0,37,78,.75); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn-blue { background: var(--blue); color: var(--white); }
+    .btn-blue:hover { background: #003a7a; }
+    .btn-white { background: var(--white); color: var(--blue); }
+    .btn-white:hover { background: var(--gray-100); }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--blue);
+      color: rgba(255,255,255,.75);
+      padding: 52px 24px 24px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 24px;
+    }
+    .footer-brand { }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .footer-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gold);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .footer-logo-text strong { display: block; color: var(--white); font-size: .9rem; }
+    .footer-logo-text span   { font-size: .75rem; }
+    .footer-brand p { font-size: .85rem; line-height: 1.7; max-width: 280px; }
+    .footer-col h4  { color: var(--white); font-size: .88rem; font-weight: 700; margin-bottom: 14px; letter-spacing: .04em; }
+    .footer-col ul  { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col li a {
+      font-size: .83rem;
+      color: rgba(255,255,255,.65);
+      transition: color .15s;
+    }
+    .footer-col li a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .78rem;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom-links { display: flex; gap: 16px; }
+    .footer-bottom-links a { color: rgba(255,255,255,.55); transition: color .15s; }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hl-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .main-nav { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--white); box-shadow: var(--shadow-lg); padding: 16px 24px; gap: 4px; }
+      .main-nav.open { display: flex; }
+      .hamburger { display: flex; }
+      .dropdown { position: static; box-shadow: none; border: none; opacity: 1; pointer-events: all; transform: none; display: none; padding: 4px 0 4px 16px; }
+      .nav-item:focus-within .dropdown,
+      .nav-item.open .dropdown { display: block; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .zg-grid { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 48px 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hl-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Prototyp-Hinweis -->
+<div class="proto-banner">
+  🎨 REDESIGN-PROTOTYP · Kurpfalz-Realschule Schriesheim · Februar 2026 · Zum Abstimmen mit dem Schulteam
+</div>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>📍 Kurpfalz-Realschule Schriesheim · Mozartstraße 28 · 69198 Schriesheim</span>
+    <div class="topbar-links">
+      <a href="#">📞 06220 / 12 34 56</a>
+      <a href="#">✉ info@krs-schriesheim.de</a>
+      <a href="#">Intranet</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a class="site-logo" href="#">
+      <div class="logo-icon">KRS</div>
+      <div class="logo-text">
+        <strong>Kurpfalz-Realschule</strong>
+        <span>Schriesheim</span>
+      </div>
+    </a>
+
+    <!-- Burger -->
+    <button class="hamburger" aria-label="Menü öffnen" onclick="this.closest('header').querySelector('.main-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Navigation (5 Hauptpunkte statt 77!) -->
+    <nav class="main-nav" role="navigation" aria-label="Hauptnavigation">
+      <div class="nav-item">
+        <a class="nav-link active" href="#">Unsere Schule ▾</a>
+        <div class="dropdown">
+          <a href="#">Über uns &amp; Leitbild</a>
+          <a href="#">Team &amp; Kollegium</a>
+          <a href="#">Ausstattung &amp; Räume</a>
+          <a href="#">Schulprofil</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#">Lernen &amp; Projekte ▾</a>
+        <div class="dropdown">
+          <a href="#">Fächer</a>
+          <a href="#">AGs &amp; Projekte</a>
+          <a href="#">Berufsorientierung BORS</a>
+          <a href="#">Digitales &amp; 3D-Druck</a>
+          <a href="#">Schulband &amp; Musik</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#">Für Eltern ▾</a>
+        <div class="dropdown">
+          <a href="#">Formulare &amp; Downloads</a>
+          <a href="#">Elternbeirat</a>
+          <a href="#">Beratung</a>
+          <a href="#">Schulordnung</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#">Für Schüler ▾</a>
+        <div class="dropdown">
+          <a href="#">SMV</a>
+          <a href="#">Vertretungsplan</a>
+          <a href="#">Downloads &amp; Links</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#">Aktuelles ▾</a>
+        <div class="dropdown">
+          <a href="#">News &amp; Berichte</a>
+          <a href="#">Termine</a>
+          <a href="#">Veranstaltungen</a>
+        </div>
+      </div>
+      <a class="nav-link nav-cta" href="#">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" aria-label="Willkommensbereich">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">🏫 Herzlich Willkommen</div>
+      <h1>Lernen. Wachsen.<br><em>Gemeinsam.</em></h1>
+      <p>Die Kurpfalz-Realschule Schriesheim – modern, digital und persönlich. Wir begleiten Ihre Kinder mit Begeisterung auf ihrem Weg.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#">Tag der offenen Tür →</a>
+        <a class="btn btn-outline" href="#">Schulprofil entdecken</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-card featured">
+        <div class="hero-card-icon">🎉</div>
+        <h3>Tag der offenen Tür</h3>
+        <p>Sa. 22. März 2026, 10–14 Uhr · Alle Interessierten herzlich willkommen!</p>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🖨</div>
+        <h3>3D-Druck AG</h3>
+        <p>Digitales Lernen mit modernster Technik</p>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🎵</div>
+        <h3>Schulband</h3>
+        <p>Musik verbindet – jetzt mitmachen!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quicklinks -->
+<section class="quicklinks" aria-label="Schnellzugriff">
+  <div class="quicklinks-inner">
+    <span class="ql-label">Schnellzugriff</span>
+    <a class="ql-btn highlight" href="#">
+      <span class="ql-icon">📅</span> Termine &amp; Kalender
+    </a>
+    <a class="ql-btn" href="#">
+      <span class="ql-icon">📋</span> Vertretungsplan
+    </a>
+    <a class="ql-btn" href="#">
+      <span class="ql-icon">📥</span> Formulare &amp; Downloads
+    </a>
+    <a class="ql-btn" href="#">
+      <span class="ql-icon">🤒</span> Krankmeldung
+    </a>
+    <a class="ql-btn" href="#">
+      <span class="ql-icon">✉</span> Kontakt
+    </a>
+  </div>
+</section>
+
+<!-- Zielgruppen -->
+<section class="zielgruppen" aria-label="Für wen sind Sie hier?">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Ihr Einstieg</div>
+      <h2>Ich bin…</h2>
+      <p>Wählen Sie Ihren Bereich – direkt zu den für Sie relevanten Informationen.</p>
+    </div>
+    <div class="zg-grid">
+      <!-- Neu hier -->
+      <div class="zg-card" tabindex="0">
+        <div class="zg-card-top">
+          <div class="zg-emoji">👋</div>
+          <h3>Neu hier</h3>
+          <p>Für Interessierte und künftige Schülerinnen &amp; Schüler</p>
+        </div>
+        <div class="zg-card-links">
+          <a class="zg-link" href="#">Schulprofil &amp; Leitbild <span class="zg-link-arrow">›</span></a>
+          <a class="zg-link" href="#">Tag der offenen Tür <span class="zg-link-arrow">›</span></a>
+          <a class="zg-link" href="#">Anmeldung &amp; Aufnahme <span class="zg-link-arrow">›</span></a>
+          <a class="zg-link" href="#">Frequently Asked Questions <span class="zg-link-arrow">›</span></a>
+        </div>
+      </div>
+      <!-- Schüler -->
+      <div class="zg-card" tabindex="0">
+        <div class="zg-card-top">
+          <div class="zg-emoji">🎒</div>
+          <h3>Schüler/in</h3>
+          <p>Vertretungsplan, SMV, Downloads &amp; mehr</p>
+        </div>
+        <div class="zg-card-links">
+          <a class="zg-link" href="#">Vertretungsplan <span class="zg-link-arrow">›</span></a>
+          <a class="zg-link" href="#">SMV <span class="zg-link-arrow">›</span></a>
+          <a class="zg-link" href="#">Berufsorientierung BORS <span class="zg-link-arrow">›</span></a>
+          <a class="zg-link" href="#">AGs &amp; Projekte <span class="zg-link-arrow">›</span></a>
+        </div>
+      </div>
+      <!-- Eltern -->
+      <div class="zg-card" tabindex="0">
+        <div class="zg-card-top">
+          <div class="zg-emoji">👨‍👩‍👧</div>
+          <h3>Elternteil</h3>
+          <p>Formulare, Elternbeirat, Beratung &amp; Termine</p>
+        </div>
+        <div class="zg-card-links">
+          <a class="zg-link" href="#">Formulare &amp; Downloads <span class="zg-link-arrow">›</span></a>
+          <a class="zg-link" href="#">Elternbeirat <span class="zg-link-arrow">›</span></a>
+          <a class="zg-link" href="#">Beratung &amp; Kontakt <span class="zg-link-arrow">›</span></a>
+          <a class="zg-link" href="#">Krankmeldung <span class="zg-link-arrow">›</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Aktuelles (News Grid) -->
+<section class="news-section" aria-label="Aktuelle Nachrichten">
+  <div class="section-inner">
+    <div class="section-header-row">
+      <div>
+        <div class="section-tag">Was ist los?</div>
+        <h2>Aktuelles aus der KRS</h2>
+      </div>
+      <a class="view-all" href="#">Alle Beiträge ansehen →</a>
+    </div>
+    <div class="news-grid">
+      <!-- News 1 -->
+      <article class="news-card">
+        <div class="news-img">🎈</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-cat">Veranstaltung</span>
+            <span class="news-date">22. Feb 2026</span>
+          </div>
+          <h3>Valentinstag an der KRS – Rosen und Überraschungen</h3>
+          <p>Die SMV überraschte Schülerinnen und Schüler mit einer besonderen Aktion zum Valentinstag…</p>
+          <a class="news-read-more" href="#">Weiterlesen →</a>
+        </div>
+      </article>
+      <!-- News 2 -->
+      <article class="news-card">
+        <div class="news-img">🏫</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-cat">Termin</span>
+            <span class="news-date">18. Feb 2026</span>
+          </div>
+          <h3>Tag der offenen Tür am 22. März – Jetzt vormerken!</h3>
+          <p>Am Samstag, 22. März, öffnet die KRS von 10 bis 14 Uhr ihre Türen für alle Interessierten…</p>
+          <a class="news-read-more" href="#">Weiterlesen →</a>
+        </div>
+      </article>
+      <!-- News 3 -->
+      <article class="news-card">
+        <div class="news-img">🖨</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-cat">Projekt</span>
+            <span class="news-date">10. Feb 2026</span>
+          </div>
+          <h3>Neue 3D-Drucker für das Technik-Labor</h3>
+          <p>Dank einer Förderung durch den Elternbeirat verfügt die Schule jetzt über drei neue 3D-Drucker…</p>
+          <a class="news-read-more" href="#">Weiterlesen →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Highlights / Schulprofil -->
+<section class="highlights" aria-label="Schulprofil-Highlights">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Was uns auszeichnet</div>
+      <h2>Die KRS Schriesheim</h2>
+      <p>Moderne Lernumgebung, engagiertes Kollegium und begeisterte Schülerinnen &amp; Schüler.</p>
+    </div>
+    <div class="hl-grid">
+      <div class="hl-card">
+        <div class="hl-icon">🖨</div>
+        <h3>3D-Druck &amp; Digitales</h3>
+        <p>Modernste Technik für zukunftsorientiertes Lernen</p>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🎙</div>
+        <h3>Podcast-Studio</h3>
+        <p>Schülerinnen und Schüler produzieren eigene Podcasts</p>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🎵</div>
+        <h3>Schulband &amp; Musik</h3>
+        <p>Musikalische Förderung auf hohem Niveau</p>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">💼</div>
+        <h3>Berufsorientierung</h3>
+        <p>BORS und intensive Praxiserfahrung für den Einstieg ins Berufsleben</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Termine -->
+<section class="termine-section" aria-label="Nächste Termine">
+  <div class="section-inner">
+    <div class="section-header-row">
+      <div>
+        <div class="section-tag">Kalender</div>
+        <h2>Nächste Termine</h2>
+      </div>
+      <a class="view-all" href="#">Alle Termine →</a>
+    </div>
+    <div class="termine-list">
+      <div class="termin-item">
+        <div class="termin-date">
+          <span class="day">22</span>
+          <span class="month">März</span>
+        </div>
+        <div class="termin-info">
+          <h4>Tag der offenen Tür</h4>
+          <p>10:00 – 14:00 Uhr · Alle Interessierten herzlich willkommen</p>
+        </div>
+        <span class="termin-tag tag-schule">Schule</span>
+      </div>
+      <div class="termin-item">
+        <div class="termin-date">
+          <span class="day">28</span>
+          <span class="month">März</span>
+        </div>
+        <div class="termin-info">
+          <h4>Elternbeiratssitzung</h4>
+          <p>19:00 Uhr · Aula der KRS Schriesheim</p>
+        </div>
+        <span class="termin-tag tag-eltern">Eltern</span>
+      </div>
+      <div class="termin-item">
+        <div class="termin-date">
+          <span class="day">3</span>
+          <span class="month">Apr</span>
+        </div>
+        <div class="termin-info">
+          <h4>Osterferien (Beginn)</h4>
+          <p>Unterrichtsfrei bis zum 17. April 2026</p>
+        </div>
+        <span class="termin-tag tag-schule">Ferien</span>
+      </div>
+      <div class="termin-item">
+        <div class="termin-date">
+          <span class="day">12</span>
+          <span class="month">Apr</span>
+        </div>
+        <div class="termin-info">
+          <h4>SMV-Vollversammlung</h4>
+          <p>11:00 Uhr · Aula · Alle Klassen nehmen teil</p>
+        </div>
+        <span class="termin-tag tag-smv">SMV</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Kontakt-CTA -->
+<section class="cta-section" aria-label="Kontaktaufruf">
+  <div class="section-inner">
+    <h2>Haben Sie Fragen?</h2>
+    <p>Unser Team ist gerne für Sie da – ob per E-Mail, Telefon oder persönlich.</p>
+    <div class="cta-btns">
+      <a class="btn btn-blue" href="#">✉ Kontakt aufnehmen</a>
+      <a class="btn btn-white" href="#">📅 Termin vereinbaren</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Branding -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">KRS</div>
+          <div class="footer-logo-text">
+            <strong>Kurpfalz-Realschule</strong>
+            <span>Schriesheim</span>
+          </div>
+        </div>
+        <p>Mozartstraße 28<br>69198 Schriesheim<br><br>
+           📞 06220 / 12 34 56<br>
+           ✉ info@krs-schriesheim.de</p>
+      </div>
+      <!-- Schule -->
+      <div class="footer-col">
+        <h4>Unsere Schule</h4>
+        <ul>
+          <li><a href="#">Über uns</a></li>
+          <li><a href="#">Team &amp; Kollegium</a></li>
+          <li><a href="#">Leitbild</a></li>
+          <li><a href="#">Ausstattung</a></li>
+        </ul>
+      </div>
+      <!-- Service -->
+      <div class="footer-col">
+        <h4>Service</h4>
+        <ul>
+          <li><a href="#">Formulare</a></li>
+          <li><a href="#">Vertretungsplan</a></li>
+          <li><a href="#">Termine</a></li>
+          <li><a href="#">Krankmeldung</a></li>
+        </ul>
+      </div>
+      <!-- Infos -->
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+          <li><a href="#">Barrierefreiheit</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Kurpfalz-Realschule Schriesheim</span>
+      <div class="footer-bottom-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Barrierefreiheit</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
